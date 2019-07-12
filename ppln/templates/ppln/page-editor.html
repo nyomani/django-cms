@@ -1,0 +1,12 @@
+{% extends "ppln/base.html" %}
+{% load cms_tags menu_tags sekizai_tags static staticfiles %}
+{% block content %}
+
+    {% if page %}
+        {% render_model page "page_title" %}
+    {% else %}
+        <div>
+            Page is not set
+        </div>
+    {% endif %}
+{% endblock %}

@@ -1,0 +1,60 @@
+{% extends "base.html" %}
+{% load my_tags cms_tags menu_tags sekizai_tags static %}
+
+{% block content %} 
+{% addtoblock "css" %}
+    <link rel="stylesheet" href="{% static "regna/css/icon-component.css" %}"/>
+{% endaddtoblock %}
+<section id="about" class="dark-content" style="max-height: 1800px">
+    <div class="container ">
+        <form id="searchform" 
+            action={% block search-url %} {% endblock search-url %} 
+            method="get" accept-charset="utf-8">
+            <input class="searchfield" style="min-width: 350px;max-width: 600px;" id="searchbox" name="search_criteria"
+                type="text" placeholder={% block searchQueryPlaceHolder %} {% endblock %}>
+            <button class="searchbutton btn-primary mb-4" type="submit">
+                <i class="fa fa-search"></i>
+            </button>
+        </form>
+            {% if items %}
+                {% for item in items %}
+                    {% block itemRender %}
+                    {% endblock itemRender %}
+                {% endfor %}
+                {% if is_paginated %}
+                    <div class="page-navigation text-center">
+                    {% if page_obj.has_previous %}
+                        <a class="btn btn-outline-info mb-4" href="{% relative_url 1 'page' request.GET.urlencode %}"><<</a> 
+                        <a class="btn btn-outline-info mb-4" href="{% relative_url page_obj.previous_page_number 'page' request.GET.urlencode %}"><</a> 
+                    {% endif %} 
+        
+                    {% for num in page_obj.paginator.page_range %} 
+                        {% if num == page_obj.number %} 
+                            <a class="btn btn-info mb-4" href="{% relative_url num 'page' request.GET.urlencode %}">{{ num }} </a>
+                        {% elif num > page_obj.number|add:'-3' and num < page_obj.number|add:'3' %}
+                            <a class="btn btn-outline-info mb-4" href="{% relative_url num 'page' request.GET.urlencode %}">{{ num }}</a>
+                        {% endif %}
+        
+                    {% endfor %}
+        
+                    {% if page_obj.has_next %}
+                        <a class="btn btn-outline-info mb-4" href="{% relative_url page_obj.next_page_number 'page' request.GET.urlencode %}">></a>
+                        <a class="btn btn-outline-info mb-4" href="{% relative_url page_obj.paginator.num_pages 'page' request.GET.urlencode %}">>></a>
+                    {% endif %}
+                    </div>        
+                {% endif %}   
+                {% block list-footer %}
+                {% endblock %} 
+            {% else %}
+                <section class="clean-block clean-hero" style="background-image:url(&quot;assets/img/tech/image4.jpg&quot;);color:rgba(9, 162, 255, 0.85);">
+                    <div class="text">
+                        {% block empty-list%}
+                            <h1>Panitia Pemilihan Umum Chicago Tahun 2019</h1>
+                            <h2>Contact pemiluchicago2019@gmail.com</h2>
+                        {% endblock %}
+                    </div>
+                </section>    
+            {% endif %}
+    </div>
+</section>
+{% endblock content %}

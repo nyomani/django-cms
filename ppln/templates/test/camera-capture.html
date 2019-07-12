@@ -1,0 +1,39 @@
+{% extends 'base.html'%}
+{% load cms_tags menu_tags sekizai_tags static %}
+
+
+{% block content %}
+    {% addtoblock "css" %}
+        <link rel="stylesheet" href="{% static "video.css" %}"/>
+    {% endaddtoblock %}
+
+    <section id="hero">
+        <div class="hero-container">
+              {% placeholder intro-content %}
+              <div class="video-layout">
+                    <div id="video-area" class="video-content">
+                        <p class="text-center bg-dark text-white">
+                            Capture Passport Image. Photo and MRZ must be inside the red box 
+                        </p>
+                        <div class="photo-overlay"></div>
+                        <div class="mrz-overlay"></div>
+                        <video id="video"autoplay></video>
+                        <div class="form-group">
+                            <button id="snap" class="btn btn-primary snap-button" >Snap Passport Image</button>
+                        </div>
+                    </div> 
+                    <div id="image-area" class="video-content">
+                        <div class="photo-overlay"></div>
+                        <div class="mrz-overlay "></div>
+                        <canvas id="canvas"  width="680" height="480" ></canvas>  
+                        <p>
+                            <button id="use" class="btn btn-primary " type="submit">Use this Image</button>
+                            <button id="retake" class="btn btn-primary " type="submit">Re-take Image</button>
+                        </p>
+                    </div>
+        </div>
+    </section><!-- #hero -->
+{% addtoblock "js" %}
+    <script src="{% static "video.js" %}"></script>
+{% endaddtoblock %}
+{% endblock content %}

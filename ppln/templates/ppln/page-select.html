@@ -1,0 +1,10 @@
+{% extends 'ppln/base-template.html' %}
+{% load crispy_forms_tags %}
+{% block container %}    
+    <form method="POST">
+            {% csrf_token %}
+            <fieldset class="form-group">
+                {{ form|crispy }}
+            </fieldset>
+    </form>
+{% endblock container %}

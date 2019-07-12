@@ -1,0 +1,107 @@
+{% load cms_tags menu_tags sekizai_tags static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>PPLN Chicago</title>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <meta content="" name="keywords">
+  <meta content="" name="description">
+
+  <!-- Favicons -->
+  <link href="{% static "regna/img/favicon.png" %}" rel="icon">
+  <link href="{% static "regna/img/apple-touch-icon.png" %}" rel="apple-touch-icon">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,700,700i|Poppins:300,400,500,700" rel="stylesheet">
+
+  <!-- Bootstrap CSS File -->
+  <link href="{% static "regna/lib/bootstrap/css/bootstrap.min.css" %}" rel="stylesheet">
+
+  <!-- Libraries CSS Files -->
+  <link href="{% static "regna/lib/font-awesome/css/font-awesome.min.css" %}" rel="stylesheet">
+  <link href="{% static "regna/lib/animate/animate.min.css" %}" rel="stylesheet">
+
+  <!-- Main Stylesheet File -->
+  <link href="{% static "regna/css/style.css" %}" rel="stylesheet">
+
+  <!-- =======================================================
+    Theme Name: Regna
+    Theme URL: https://bootstrapmade.com/regna-bootstrap-onepage-template/
+    Author: BootstrapMade.com
+    License: https://bootstrapmade.com/license/
+  ======================================================= -->
+  {% render_block "css" %}
+</head>
+
+<body>
+        {% cms_toolbar %}
+      <!--==========================
+    Header
+    ============================-->
+    <header id="header">
+        <div class="container">
+    
+          <div id="logo" class="pull-left">
+            <a href="#hero"><img src="{% static "regna/img/logo.png" %}" alt="" title="" /></img></a>
+          </div>
+    
+          <nav id="nav-menu-container">
+            <ul class="nav-menu">
+              {% show_menu 0 100 100 100 %}
+            </ul>
+          </nav>
+        </div>
+    </header>
+  {% block content %}
+
+  {% placeholder content %}
+
+  {% endblock content %}
+  <!--==========================
+    Footer
+  ============================-->
+  <footer id="footer">
+    <div class="footer-top">
+      <div class="container">
+
+      </div>
+    </div>
+    <div class="container">
+      <div class="copyright">
+        &copy; Copyright <strong>PPLN Chicago</strong>. All Rights Reserved
+      </div>
+      <div class="credits">
+        <!--
+          All the links in the footer should remain intact.
+          You can delete the links only if you purchased the pro version.
+          Licensing information: https://bootstrapmade.com/license/
+          Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/buy/?theme=Regna
+        -->
+        Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
+      </div>
+    </div>
+  </footer><!-- #footer -->Regna
+
+  <a href="#" class="back-to-top"><i class="fa fa-chevron-up"></i></a>
+
+  <!-- JavaScript Libraries -->
+  <script src="{% static "regna/lib/jquery/jquery.min.js" %}"></script>
+  <script src="{% static "regna/lib/jquery/jquery-migrate.min.js" %}"></script>
+  <script src="{% static "regna/lib/bootstrap/js/bootstrap.bundle.min.js" %}"></script>
+  <script src="{% static "regna/lib/easing/easing.min.js" %}"></script>
+  <script src="{% static "regna/lib/wow/wow.min.js" %}"></script>
+  <script src="{% static "regna/lib/waypoints/waypoints.min.js" %}"></script>
+  <script src="{% static "regna/lib/counterup/counterup.min.js" %}"></script>
+  <script src="{% static "regna/lib/superfish/hoverIntent.js" %}"></script>
+  <script src="{% static "regna/lib/superfish/superfish.min.js" %}"></script>
+
+  <!-- Contact Form JavaScript File -->
+  <script src="{% static "regna/contactform/contactform.js" %}"></script>
+
+  <!-- Template Main Javascript File -->
+  <script src="{% static "regna/js/main.js" %}"></script>
+  {% render_block "js" %}
+
+</body>
+</html>

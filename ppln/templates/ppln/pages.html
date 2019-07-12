@@ -1,0 +1,38 @@
+{% extends 'ppln/nobase-paginator.html' %}
+{% load my_tags static sekizai_tags cms_tags %}
+{% block id %}pages{% endblock id%}
+{% block searchUrl %}
+    {% url 'search-voter' %}
+{% endblock %}
+
+{% block searchQueryPlaceHolder %}
+    "Search articles"
+{% endblock %}
+
+{% block itemRender %}
+{% addtoblock "css" %}
+    <link rel="stylesheet" href="{% static "ppln/css/pages.css" %}"/>
+{% endaddtoblock %}
+
+    {% if forloop.counter|modulo:3 == 1 %}
+    <div class="row pages-container">
+    {% endif %}
+    <div class="col-lg-4 content order-lg-1 order-2">
+        <div class="icon-box wow fadeInUp mb-4" data-wow-delay="0.2s" style="padding: 10px; height: 90%;">
+            <div class="icon"><i class="fa fa-shopping-bag"></i></div>
+            <h4 class="title"><a href="{{item.get_absolute_url}}">{{ item.get_title}}</a></h4>
+            <p class="description">
+                {{ item.get_title}}<br>
+            </p>
+            <div class="description">
+                {{item.metapage.page_summary}}
+            </div>
+            <a class="description btn-outline-primary mr-4" href="{{item.get_absolute_url}}">
+                Read more...
+            </a>
+        </div>
+    </div>
+    {% if forloop.last or forloop.counter|modulo:3 == 0 %}
+    </div>
+    {% endif %}
+{% endblock itemRender %}

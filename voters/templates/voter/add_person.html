@@ -1,0 +1,45 @@
+{% load crispy_forms_tags sekizai_tags my_tags %}
+{% load static %}
+{% block content %}
+{% addtoblock "css" %}
+<link rel="stylesheet" href="{% static "Contact-Form-Clean.css" %}"/>
+{% endaddtoblock %}
+
+<section id="about" class="dark-content">
+    <div class="contact-clean ">
+    {% if form %}
+        <form action="{% url 'add-voter' %}" method="post" >
+            <h2 class="text-center">Register</h2>
+            {% csrf_token %}
+            {% for field in form %}
+            {% if forloop.counter|modulo:2 == 1 %}
+                <div class="row">
+            {% endif %}
+                    <div class="form-group d-inline-flex align-content-start mx-auto row col-md-6 col-xs-12">
+                        {{ field.errors }}
+                        {% if field.help_text %}
+                            {{ field.help_text|safe }}
+                            {{ field }}
+                        {% else %}
+                            {{ field }}
+                        {% endif %}
+                </div>
+
+            {% if forloop.last or forloop.counter|modulo:2 == 0 %}
+                </div>
+            {% endif %}
+            {% endfor %}
+            <div class="form-group"><button class="btn btn-primary" type="submit">send </button></div>
+        </form>
+    {% else %}
+        <form action="/">
+            <h2 class="text-center">{{person.firstName}} {{person.lastName}}</h2>
+            <h3 class="text-center"> Thank you for registering with PPLN Chicago </h3>
+            <div class="form-group">
+                <button class="btn btn-primary" type="submit">Back Home </button>
+            </div>
+        </form>
+    {% endif %} 
+</div> 
+</section>
+{% endblock content %}

@@ -1,0 +1,83 @@
+#profile {
+  background-size: cover;
+  padding: 80px 0 60px 0;
+}
+
+#profile .box {
+  padding: 50px 20px;
+  margin-bottom: 50px;
+  text-align: center;
+  border: 1px solid #e6e6e6;
+  position: relative;
+  background: #fafafa;
+}
+
+#profile .icon {
+  position: absolute;
+  top: -36px;
+  left: calc(50% - 53px);
+  transition: 0.2s;
+  border-radius: 50%;
+  border: 6px solid #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  text-align: center;
+  width: 106px;
+  height: 106px;
+  background: #2dc997;
+}
+
+#profile .icon a {
+  display: inline-block;
+}
+
+#profile .icon i {
+  color: #fff;
+  font-size: 24px;
+}
+#profile .icon img {
+  width: 100px;
+  height: 100px;
+}
+
+#profile .box:hover .icon {
+  background: #fff;
+  border: 2px solid #2dc997;
+}
+
+#profile .box:hover .icon i {
+  color: #2dc997;
+}
+
+#profile .box:hover .icon a {
+  color: #ec0b3c;
+}
+
+#profile .title {
+  font-weight: 700;
+  font-size: 18px;
+  margin-top: 30px;
+  margin-bottom: 15px;
+  text-transform: uppercase;
+  align-content: center
+}
+
+#profile .title a {
+  color: #111;
+}
+
+#profile .description {
+  font-size: 14px;
+  line-height: 1px;
+  color: rgb(100, 2, 2);
+}
+
+#register {
+  background-size: cover;
+  padding: 80px 0 60px 0;
+}
+.register-container {
+  margin-top:100px;
+}

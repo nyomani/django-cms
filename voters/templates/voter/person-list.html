@@ -1,0 +1,55 @@
+{% extends "ppln/paginator.html" %}
+{% load my_tags static sekizai_tags %}
+
+{% block id %}about{% endblock id%}
+
+{% block searchUrl %}
+    {% url 'search-voter' %}
+{% endblock %}
+
+{% block searchQueryPlaceHolder %}
+    "Search your name (Name, City)"
+{% endblock %}
+
+{% block itemRender %}
+{% if forloop.counter|modulo:2 == 1 %}
+    <div class="row about-container">
+    {% endif %}
+        <div class ="col-lg-6   order-lg-1 order-2 "  >
+
+            <div class="round-corner icon-box wow fadeInUp" data-wow-delay="0.2s" style="padding: 10px; height: 98%;">
+                <div class="icon"><i class="fa fa-photo"></i></div>
+                <h4 class="title"><a href="">{{ item.person.first_name}} {{ item.person.last_name }}</a></h4>
+                <h3 class="description" style="color: rgb(36, 45, 48)">
+                    Live in {{ item.person.city }}, {{ item.person.state }} from {{item.person.birthPlace }}
+                </h3>
+                {% if item.follow_up_needed %}
+                    <h3 class="description" style="color: rgb(230, 21, 31)">{{ item.voter_status_msg }}</h3>
+                {% else %}
+                    <h3 class="description" style="color: rgb(36, 45, 48)">{{ item.voter_status_msg }}</h3>
+                {% endif %}
+                {% if item.person.email %}
+                        {% if user == item.person %}
+                        <a class="description btn btn-primary mr-4"  
+                            href="/profile-update">
+                        {% else %}
+                        <a class="description btn-outline-primary mr-4"  
+                            href="/send-email">
+                        {% endif %}
+                        Update detail</a>
+                {% endif %}
+                {% if item.status != 'APP' %}
+                        <a class="description btn-outline-primary" href="#">Report as invalid</a>
+                {% endif %}
+                
+            </div>
+
+        </div>
+    {% if forloop.last or forloop.counter|modulo:2 == 0 %}
+    </div>
+    {% endif %}
+{% endblock itemRender %}
+{% block empty-list%}
+    <h1>The person you are searching for is not found!</h1>
+    <h3>For further information please contact us at pemiluchicago2019@gmail.com</h3>
+{% endblock %}

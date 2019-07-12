@@ -1,0 +1,76 @@
+/* pages  Section
+--------------------------------*/
+#pages {
+    padding: 80px 0;
+  }
+  
+  #pages .pages-container .background {
+    min-height: 300px;
+    margin-bottom: 10px;
+  }
+  
+  #pages .pages-container .content {
+  
+  }
+  
+  #pages .pages-container .title {
+    color: rgb(253, 252, 252);
+    font-weight: 700;
+    font-size: 32px;
+  }
+  
+  @media (max-width: 768px) {
+    #pages .pages-container .title {
+      padding-top: 15px;
+    }
+  }
+  
+  #pages .pages-container p {
+    line-height: 26px;
+  }
+  
+  #pages .pages-container p:last-child {
+    margin-bottom: 0;
+  }
+  
+  #pages .pages-container .icon-box {
+    background-size: cover;
+    padding: 0 0 30px 0;
+  }
+  
+  #pages .pages-container .icon-box .icon {
+    float: left;
+    width: 64px;
+    height: 64px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    text-align: center;
+    border-radius: 50%;
+    border: 2px solid #f59c38;
+  }
+  
+  #pages .pages-container .icon-box .icon i {
+    color: #f18724;
+    font-size: 24px;
+  }
+  
+  #pages .pages-container .icon-box .title {
+    margin-left: 80px;
+    font-weight: 500;
+    margin-bottom: 5px;
+    font-size: 18px;
+    text-transform: uppercase;
+  }
+  
+  #pages .pages-container .icon-box .title a {
+    color: rgb(247, 151, 62);
+  }
+  
+  #pages .pages-container .icon-box .description {
+    margin-left: 80px;
+    line-height: 24px;
+    font-size: 14px;
+  }
+  

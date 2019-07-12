@@ -1,0 +1,15 @@
+{% extends 'ppln/tally.html' %}
+{% load my_tags %}
+{% block candidate-render %} 
+   {% for c in party.list %}
+    <img class="mt-4 mb-4 mx-auto d-block" src="/media/{{ c.image }}" style="height:100px"/>  
+    <div class="text-center mt-4">
+        <h1 class="display-1" style="color: lightseagreen">
+            <span data-toggle="counter-up">
+               {% sum c.vote_count_tps c.vote_count_pos %}
+            </span>
+        </h1>
+        <h4>{{ c.name }}</h4>
+    </div>
+    {% endfor %}
+{% endblock %}

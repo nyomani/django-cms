@@ -1,0 +1,13 @@
+{% extends 'ppln/base.html' %}
+{% load my_tags cms_tags menu_tags sekizai_tags static staticfiles %}
+
+{% block content %}
+{% addtoblock "css" %}
+{% endaddtoblock %}
+<section id="about" class="dark-content" >
+    <div class="container ">
+        {% placeholder content%}
+    </div>
+</section>
+
+{% endblock %}

@@ -1,0 +1,50 @@
+{% load my_tags cms_tags menu_tags sekizai_tags static %}
+
+{% block content %} 
+{% addtoblock "css" %}
+    <link rel="stylesheet" href="{% static "regna/css/icon-component.css" %}"/>
+{% endaddtoblock %}
+<section id="{% block id %}  {% endblock id%}">
+    <div class="container ">
+            {% if items %}
+                {% for item in items %}
+                    {% block itemRender %}
+                    {% endblock itemRender %}
+                {% endfor %}
+                {% if is_paginated %}
+                    <div class="page-navigation text-center">
+                    {% if page_obj.has_previous %}
+                        <a class="btn btn-outline-info mb-4" href="{% relative_url 1 'page' request.GET.urlencode %}"><<</a> 
+                        <a class="btn btn-outline-info mb-4" href="{% relative_url page_obj.previous_page_number 'page' request.GET.urlencode %}"><</a> 
+                    {% endif %} 
+        
+                    {% for num in page_obj.paginator.page_range %} 
+                        {% if num == page_obj.number %} 
+                            <a class="btn btn-info mb-4" href="{% relative_url num 'page' request.GET.urlencode %}">{{ num }} </a>
+                        {% elif num > page_obj.number|add:'-3' and num < page_obj.number|add:'3' %}
+                            <a class="btn btn-outline-info mb-4" href="{% relative_url num 'page' request.GET.urlencode %}">{{ num }}</a>
+                        {% endif %}
+        
+                    {% endfor %}
+        
+                    {% if page_obj.has_next %}
+                        <a class="btn btn-outline-info mb-4" href="{% relative_url page_obj.next_page_number 'page' request.GET.urlencode %}">></a>
+                        <a class="btn btn-outline-info mb-4" href="{% relative_url page_obj.paginator.num_pages 'page' request.GET.urlencode %}">>></a>
+                    {% endif %}
+                    </div>        
+                {% endif %}   
+                {% block list-footer %}
+                {% endblock %} 
+            {% else %}
+                <section class="clean-block clean-hero" style="background-image:url(&quot;assets/img/tech/image4.jpg&quot;);color:rgba(9, 162, 255, 0.85);">
+                    <div class="text">
+                        {% block empty-list%}
+                            <h1>Panitia Pemilihan Umum Chicago Tahun 2019</h1>
+                            <h2>Contact pemiluchicago2019@gmail.com</h2>
+                        {% endblock %}
+                    </div>
+                </section>    
+            {% endif %}
+    </div>
+</section>
+{% endblock content %}

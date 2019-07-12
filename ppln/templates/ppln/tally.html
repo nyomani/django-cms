@@ -1,0 +1,18 @@
+{% load my_tags cms_tags menu_tags sekizai_tags static staticfiles %}
+{% regroup candidates by party as parties %}
+    {% for party in parties %}
+        {% if forloop.counter|modulo:2 == 1 %}
+            <div class="row about-container">
+        {% endif %}
+            <div class ="col-lg-6 order-lg-1 order-2 mb-4 "  >
+                <div class="round-corner icon-box wow fadeInUp mb-4" data-wow-delay="0.2s" style="padding: 10px;height:100%; color:rebeccapurple">
+                    <h1 class="mt-1 mb-1">{{ party.grouper }}</h1>
+                    <hr>
+                    {% block candidate-render %}
+                    {% endblock %}
+                </div>
+            </div>
+        {% if forloop.last or forloop.counter|modulo:2 == 0 %}
+            </div>
+        {% endif %}
+    {% endfor %}

@@ -1,0 +1,39 @@
+{% extends 'ppln/tally.html' %}
+{% load my_tags %}
+{% block candidate-render %} 
+<div class="text-left ml-2 mr-2" style="color: floralwhite">
+    {% for c in party.list %}
+            {% if forloop.counter|modulo:2 == 1 %}
+            <div class="row about-container" style="background-color: rgb(8, 67, 126)">
+            {% else %}
+            <div class="row about-container" style="background-color: rgb(7, 107, 138)">
+            {% endif %}
+                <div class ="col-1"  >
+                    <span>{{c.candidate_id}}</span>
+                </div>
+                <div class ="col-9"  >
+                    <span>{{c.name}}</span>
+                </div>
+                <div class ="col-2 text-right">
+                    <span data-toggle="counter-up">
+                        {% sum c.vote_count_pos c.vote_count_tps %}
+                    </span>
+                </div>
+            </div>
+    {% endfor %}
+    <div class="row about-container" style="background-color: rgb(46, 3, 82)">
+        <div class ="col-1"  >
+            <span></span>
+        </div>
+        <div class ="col-9"  >
+            <span>Total</span>
+        </div>
+        <div class ="col-2 text-right">
+            <span data-toggle="counter-up">
+                {% vote_total party.list %}
+            </span>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

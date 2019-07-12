@@ -1,0 +1,20 @@
+{% extends 'ppln/base-template.html' %}
+{% load crispy_forms_tags %}
+{% block container %}    
+    <form method="POST">
+            {% csrf_token %}
+            <fieldset class="form-group">
+                {{ a_form|crispy }}
+            </fieldset>
+    </form>
+    <form method="POST">
+            {% csrf_token %}
+            <fieldset class="form-group">
+                {{ p_form|crispy }}
+            </fieldset>
+    </form>
+    <div class="form-group">
+            <button class="btn btn-outline-info" type="submit">Save</button>
+    </div>
+
+{% endblock container %}

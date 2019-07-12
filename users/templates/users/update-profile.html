@@ -1,0 +1,18 @@
+{% extends 'ppln/base-template.html' %}
+{% load crispy_forms_tags sekizai_tags static %}
+{% block container %}
+{% addtoblock "css" %}
+    <link rel="stylesheet" href="{% static "users/css/style.css" %}"/>
+{% endaddtoblock %}
+
+<form method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        <fieldset class="form-group">
+            <legend class="border-bottom mb-4">Profile</legend>
+            {{ form|crispy }}
+        </fieldset>
+        <div class="form-group">
+            <button class="btn btn-outline-info" type="submit">Save</button>
+        </div>
+</form>
+{% endblock container %}

@@ -1,0 +1,32 @@
+{% extends 'ppln/base.html' %}
+{% load crispy_forms_tags sekizai_tags static %}
+{% block content %}
+{% addtoblock "css" %}
+    <link rel="stylesheet" href="{% static "users/css/style.css" %}"/>
+{% endaddtoblock %}
+
+<section id="profile" class="dark-content">
+        <div class="container wow fadeInUp">
+            <div class="row">
+                    <div class="col-12">
+                        <div class="box">
+                            <div class="icon"><img class="rounded-circle" src="/media/{{user.image}}"> </div>
+                            <h4 class="title"><a href="">{{ user.first_name}} {{ user.last_name}}</a></h4>
+                            <p class="description">{{ user.address}} {{ user.city}}, {{ user.state}} {{ user.zipCode}}</p>
+                            <p class="description">Birth: {{ user.birthPlace}} {{ user.birthDate}}
+                               Gender: {{ user.profile.gender }}
+                               {% if user.profile.personregistration %} 
+                                 Voting method : {{ user.personregistration.votingMethod }}
+                               {% endif %} 
+                            </p>
+                            <p class="description">Telp. {{ user.telp}}  email: {{ user.email}}</p>
+                            <div>
+                                <a class="description btn-outline-primary mr-4"  href="/profile-update">Update detail</a>
+                                <a class="description btn-outline-primary" href="/password-reset">Change Password</a>
+                            </div>    
+                        </div>
+                    </div>
+            </div>
+        </div>
+</section>
+{% endblock content %}

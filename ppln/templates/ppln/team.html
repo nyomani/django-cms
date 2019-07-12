@@ -1,0 +1,20 @@
+{% load cms_tags menu_tags sekizai_tags static staticfiles %}
+
+<section id="committee">
+    <div class="container wow fadeInUp">
+        <div class="row">
+            {% for p in people %}
+                {% if p.rank == 1 %}
+                <div class="col-12">
+                {% else %}
+                <div class="col-lg-6">
+                {% endif %}
+                    <div class="box">
+                        <div class="icon"><img class="rounded-circle" src="/media/{{p.profile.image}}"> </div>
+                        <h4 class="title"><a href="">{{ p.profile.first_name}} {{ p.profile.last_name}}</a></h4>
+                        <div class="description">{{ p.description|safe }}</div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+</section>
